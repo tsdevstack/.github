@@ -49,9 +49,7 @@ Services run in private subnets with no public IP. All traffic passes through Ko
 
 | Package | Description |
 |---------|-------------|
-| [`@tsdevstack/cli`](https://www.npmjs.com/package/@tsdevstack/cli) | CLI tools, code generators, and project scaffolding |
-| [`@tsdevstack/cli-infra`](https://www.npmjs.com/package/@tsdevstack/cli-infra) | Infrastructure deployment (Terraform, Docker, CI/CD) |
-| [`@tsdevstack/cli-cloud-secrets`](https://www.npmjs.com/package/@tsdevstack/cli-cloud-secrets) | Cloud secrets management (GCP, AWS, Azure) |
+| [`@tsdevstack/cli`](https://www.npmjs.com/package/@tsdevstack/cli) | CLI tools, code generators, infrastructure deployment, and cloud secrets management |
 | [`@tsdevstack/cli-mcp`](https://www.npmjs.com/package/@tsdevstack/cli-mcp) | MCP server for AI agent integration |
 | [`@tsdevstack/nest-common`](https://www.npmjs.com/package/@tsdevstack/nest-common) | Shared NestJS modules (auth, secrets, observability, email) |
 | [`@tsdevstack/react-bot-detection`](https://www.npmjs.com/package/@tsdevstack/react-bot-detection) | React bot detection (behavioral analysis + honeypot) |
