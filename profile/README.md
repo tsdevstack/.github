@@ -27,7 +27,7 @@ One config drives everything: Terraform infrastructure, Docker builds, Kong gate
 
 **Full observability** — structured logging with PII redaction, Prometheus metrics, distributed tracing via OpenTelemetry, health checks. Locally: Grafana + Jaeger. In cloud: native provider logging with zero code changes.
 
-**AI-native tooling** — built-in MCP server with 48 tools for deploying, querying, and debugging your stack from Claude Code, Cursor, or VS Code Copilot.
+**AI-native tooling** — built-in MCP server with 54 tools for deploying, querying, and debugging your stack from Claude Code, Cursor, or VS Code Copilot.
 
 **Type-safe across the stack** — OpenAPI specs generate TypeScript HTTP clients and DTOs automatically. Types flow from backend decorators to frontend components with full validation.
 
