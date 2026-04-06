@@ -1,10 +1,12 @@
 # tsdevstack
 
-**Infrastructure as Framework** — the full-stack, cloud-native, AI-native TypeScript microservices framework.
+**Infrastructure as Framework** for TypeScript microservices.
 
-From zero to production in an hour, not months.
+One config file. Three cloud providers. Production-grade infrastructure — generated, not hand-written.
 
-You don't write Terraform. You don't configure gateways. You don't set up CI/CD. The framework generates, manages, and deploys all of it — across GCP, AWS, and Azure. You write application code, tsdevstack handles everything else.
+```bash
+npx @tsdevstack/cli init
+```
 
 ---
 
@@ -14,6 +16,7 @@ You don't write Terraform. You don't configure gateways. You don't set up CI/CD.
 npx @tsdevstack/cli init        # scaffold a project
 npx tsdevstack add-service      # add a NestJS backend, Next.js frontend, or Rsbuild SPA
 npx tsdevstack sync             # generate secrets, gateway, docker-compose
+npm run dev                     # local development with full stack
 npx tsdevstack infra:deploy     # deploy to GCP, AWS, or Azure
 ```
 
@@ -23,17 +26,27 @@ One config drives everything: Terraform infrastructure, Docker builds, Kong gate
 
 **Multi-cloud deployment** — same framework, same patterns across GCP (Cloud Run), AWS (ECS Fargate), and Azure (Container Apps). Switch providers without rewriting infrastructure.
 
-**Security by default** — WAF with OWASP rules, JWT validation at the gateway, network isolation, zero-credential runtimes, non-root containers, encrypted secrets. SOC 2, GDPR, and ISO 27001 technical controls are built in, not bolted on.
+**API gateway** — Kong routes auto-generated from your OpenAPI specs. JWT validation, rate limiting, CORS, bot detection. Fully customizable when you need it, or bring your own Kong config.
 
-**Full observability** — structured logging with PII redaction, Prometheus metrics, distributed tracing via OpenTelemetry, health checks. Locally: Grafana + Jaeger. In cloud: native provider logging with zero code changes.
+**Background processing** — BullMQ job queues with detached workers running in separate containers. Register, deploy, and scale workers independently from your API services.
+
+**Object storage** — add buckets with a single command. MinIO locally, S3/GCS/Azure Blob in production. Unified `StorageModule` with presigned URLs, streaming, and per-provider adapters.
+
+**Async messaging** — inter-service pub/sub via Redis Streams. Consumer groups, dead letter queues, retry logic. No new infrastructure — runs on the same Redis instance as caching and BullMQ.
+
+**Authentication** — JWT token management, protected routes, session handling, email confirmation. Bring your own OIDC or use the built-in auth service.
+
+**Security by default** — WAF with OWASP rules, network isolation, zero-credential runtimes, non-root containers, encrypted secrets. SOC 2, GDPR, and ISO 27001 technical controls built in.
+
+**Observability** — structured logging with PII redaction, Prometheus metrics, distributed tracing via OpenTelemetry, health checks. Locally: Grafana + Jaeger. In cloud: native provider logging.
+
+**Type-safe across the stack** — OpenAPI specs generate TypeScript HTTP clients with DTOs as separated imports. Both frontend and backend apps consume the same type-safe library.
 
 **AI-native tooling** — built-in MCP server with 54 tools for deploying, querying, and debugging your stack from Claude Code, Cursor, or VS Code Copilot.
 
-**Type-safe across the stack** — OpenAPI specs generate TypeScript HTTP clients and DTOs automatically. Types flow from backend decorators to frontend components with full validation.
-
 ### Tech stack
 
-NestJS · Next.js · Rsbuild · Kong · PostgreSQL · Redis · Prisma · Terraform · Docker · GitHub Actions
+NestJS · Next.js · Rsbuild · Kong · PostgreSQL · Redis · Prisma · BullMQ · Terraform · Docker · GitHub Actions
 
 ### Architecture
 
@@ -47,16 +60,16 @@ Services run in private subnets with no public IP. All traffic passes through Ko
 
 ### Packages
 
-| Package | Description |
-|---------|-------------|
-| [`@tsdevstack/cli`](https://www.npmjs.com/package/@tsdevstack/cli) | CLI tools, code generators, infrastructure deployment, and cloud secrets management |
-| [`@tsdevstack/cli-mcp`](https://www.npmjs.com/package/@tsdevstack/cli-mcp) | MCP server for AI agent integration |
-| [`@tsdevstack/nest-common`](https://www.npmjs.com/package/@tsdevstack/nest-common) | Shared NestJS modules (auth, secrets, observability, email) |
-| [`@tsdevstack/react-bot-detection`](https://www.npmjs.com/package/@tsdevstack/react-bot-detection) | React bot detection (behavioral analysis + honeypot) |
+| Package                                                                                            | Description                                                              |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [`@tsdevstack/cli`](https://www.npmjs.com/package/@tsdevstack/cli)                                 | CLI — project scaffolding, infrastructure generation, deployment         |
+| [`@tsdevstack/nest-common`](https://www.npmjs.com/package/@tsdevstack/nest-common)                 | Shared NestJS modules — auth, secrets, storage, messaging, observability |
+| [`@tsdevstack/cli-mcp`](https://www.npmjs.com/package/@tsdevstack/cli-mcp)                         | MCP server — AI agent integration with 54 tools                          |
+| [`@tsdevstack/react-bot-detection`](https://www.npmjs.com/package/@tsdevstack/react-bot-detection) | React bot detection — behavioral analysis + honeypot                     |
 
 ### Documentation
 
-Full guides, tutorials, and API reference at [tsdevstack.dev](https://tsdevstack.dev/)
+Guides, architecture, and API reference at **[tsdevstack.dev](https://tsdevstack.dev)**
 
 ### License
 
