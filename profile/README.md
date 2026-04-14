@@ -34,9 +34,9 @@ One config drives everything: Terraform infrastructure, Docker builds, Kong gate
 
 **Async messaging** — inter-service pub/sub via Redis Streams. Consumer groups, dead letter queues, retry logic. No new infrastructure — runs on the same Redis instance as caching and BullMQ.
 
-**Authentication** — JWT token management, protected routes, session handling, email confirmation. Bring your own OIDC or use the built-in auth service.
+**Authentication** — OWASP-aligned JWT token management, protected routes, session handling, email confirmation. Bring your own OIDC or use the built-in auth service template.
 
-**Security by default** — WAF with OWASP rules, network isolation, zero-credential runtimes, non-root containers, encrypted secrets. SOC 2, GDPR, and ISO 27001 technical controls built in.
+**Security by default** — WAF with OWASP rules, OWASP Top 10 coverage, network isolation, zero-credential runtimes, non-root containers, encrypted secrets. SOC 2, GDPR, and ISO 27001 technical controls built in.
 
 **Observability** — structured logging with PII redaction, Prometheus metrics, distributed tracing via OpenTelemetry, health checks. Locally: Grafana + Jaeger. In cloud: native provider logging.
 
