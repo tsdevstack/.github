@@ -67,10 +67,18 @@ Services run in private subnets with no public IP. All traffic passes through Ko
 | [`@tsdevstack/cli-mcp`](https://www.npmjs.com/package/@tsdevstack/cli-mcp)                         | MCP server — AI agent integration with 54 tools                          |
 | [`@tsdevstack/react-bot-detection`](https://www.npmjs.com/package/@tsdevstack/react-bot-detection) | React bot detection — behavioral analysis + honeypot                     |
 
+The infrastructure and cloud logic lives in three Apache-2.0 packages that are bundled into the CLI for now, rather than published to npm:
+
+| Package                         | Description                                                   |
+| ------------------------------- | ------------------------------------------------------------- |
+| `@tsdevstack/cli-infra`         | Terraform generation and multi-cloud deploy (GCP, AWS, Azure) |
+| `@tsdevstack/cli-cloud-secrets` | Cloud Secret Manager sync across GCP, AWS, and Azure          |
+| `@tsdevstack/infra-core`        | Shared infrastructure utilities used by cli-infra             |
+
 ### Documentation
 
 Guides, architecture, and API reference at **[tsdevstack.dev](https://tsdevstack.dev)**
 
 ### License
 
-MIT
+Apache-2.0
